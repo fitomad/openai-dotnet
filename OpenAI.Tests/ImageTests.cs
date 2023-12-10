@@ -1,13 +1,13 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.Models.Image;
-using OpenAI.Entities.Image;
+using Fitomad.OpenAI.Models.Image;
+using Fitomad.OpenAI.Entities.Image;
 using System.ComponentModel;
-using OpenAI.Extensions;
+using Fitomad.OpenAI.Extensions;
 using System.Text;
 
-namespace OpenAI.Tests;
+namespace Fitomad.OpenAI.Tests;
 
 public class ImageTests
 {

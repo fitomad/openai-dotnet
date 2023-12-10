@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace OpenAI.Entities.Image;
+namespace Fitomad.OpenAI.Entities.Image;
 
 public record ImageResponse
 {

@@ -1,12 +1,12 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.Models.Chat;
-using OpenAI.Entities.Chat;
+using Fitomad.OpenAI.Models.Chat;
+using Fitomad.OpenAI.Entities.Chat;
 using System.ComponentModel;
-using OpenAI.Extensions;
+using Fitomad.OpenAI.Extensions;
 
-namespace OpenAI.Tests;
+namespace Fitomad.OpenAI.Tests;
 
 public class ChatCompletionTests
 {

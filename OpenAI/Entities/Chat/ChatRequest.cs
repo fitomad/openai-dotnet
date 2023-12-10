@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace OpenAI.Entities.Chat;
+namespace Fitomad.OpenAI.Entities.Chat;
 
 public record ChatRequest
 {

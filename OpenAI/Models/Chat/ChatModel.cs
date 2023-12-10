@@ -1,10 +1,10 @@
 using System.Text;
 using System.Text.Json;
 using System.Net.Http.Json;
-using OpenAI.Entities.Chat;
+using Fitomad.OpenAI.Entities.Chat;
 using System.Net.Http.Headers;
 
-namespace OpenAI.Models.Chat;
+namespace Fitomad.OpenAI.Models.Chat;
 
 public sealed class ChatModel
 {

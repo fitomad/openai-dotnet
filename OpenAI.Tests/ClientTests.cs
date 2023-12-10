@@ -1,6 +1,6 @@
-namespace OpenAI.Tests;
+namespace Fitomad.OpenAI.Tests;
 
-using OpenAI.Models.Chat;
+using Fitomad.OpenAI.Models.Chat;
 
 public class ClientTests
 {

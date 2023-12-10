@@ -1,9 +1,8 @@
 using System.Net.Http.Headers;
 using System.Reflection.Metadata;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI;
 
-namespace OpenAI.Extensions;
+namespace Fitomad.OpenAI.Extensions;
 
 public static class ServiceColletionOpenAI
 {

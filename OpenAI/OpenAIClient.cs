@@ -1,5 +1,5 @@
-using OpenAI.Models.Chat;
-using OpenAI.Models.Image;
+using Fitomad.OpenAI.Models.Chat;
+using Fitomad.OpenAI.Models.Image;
 
 public interface IOpenAIClient
 {

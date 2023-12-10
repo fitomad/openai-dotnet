@@ -1,4 +1,4 @@
-namespace OpenAI.Models.Chat;
+namespace Fitomad.OpenAI.Models.Chat;
 
 public enum ChatResponseFormat
 {

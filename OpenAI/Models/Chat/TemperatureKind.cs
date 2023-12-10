@@ -2,6 +2,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Security.Cryptography;
 
+namespace Fitomad.OpenAI.Models.Chat;
+
 public enum TemperatureKind
 {
     Precise,
