@@ -13,8 +13,6 @@ public sealed class ChatModel
     internal ChatModel(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        Console.WriteLine(_httpClient.BaseAddress);
-        Console.WriteLine(_httpClient.DefaultRequestHeaders);
     }
 
     public async Task<ChatResponse> CreateChatAsync(ChatRequest chatRequest)

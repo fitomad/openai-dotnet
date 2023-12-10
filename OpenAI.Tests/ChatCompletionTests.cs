@@ -192,7 +192,6 @@ public class ChatCompletionTests
         Assert.NotNull(client);
 
         var chatResponse = await client.ChatCompletion.CreateChatAsync(request);
-        Console.WriteLine(chatResponse);
         Assert.NotNull(chatResponse);
         Assert.NotEmpty(chatResponse.ResponseId);
         Assert.NotEmpty(chatResponse.Choices);

@@ -74,7 +74,7 @@ public sealed class ImageRequestBuilder
             throw new OpenAIException("You must set a valid prompt.");
         }
 
-        if(_request.ModelName == ImageModelKind.DALL_E_3.ToString())
+        if(_request.ModelName == ImageModelKind.DALL_E_3.GetValue())
         {
             CheckRequestParameterForDallE3();
         }
