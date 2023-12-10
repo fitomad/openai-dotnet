@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace OpenAI;
+﻿namespace Fitomad.OpenAI;
 
 public struct OpenAISettings
 {

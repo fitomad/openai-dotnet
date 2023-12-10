@@ -1,6 +1,6 @@
 using System;
 
-namespace OpenAI.Extensions;
+namespace Fitomad.OpenAI.Extensions;
 
 public static class DoubleOpenAIExtension
 {

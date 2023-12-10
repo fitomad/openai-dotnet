@@ -2,9 +2,9 @@ using System.Text;
 using System.Text.Json;
 using System.Net.Http.Json;
 
-using OpenAI.Entities.Image;
+using Fitomad.OpenAI.Entities.Image;
 
-namespace OpenAI.Models.Image;
+namespace Fitomad.OpenAI.Models.Image;
 
 public sealed class ImageModel
 {

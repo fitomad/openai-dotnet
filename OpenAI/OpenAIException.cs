@@ -1,4 +1,4 @@
-namespace OpenAI;
+namespace Fitomad.OpenAI;
 
 public class OpenAIException: Exception
 {

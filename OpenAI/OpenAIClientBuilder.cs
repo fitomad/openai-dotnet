@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace OpenAI;
+namespace Fitomad.OpenAI;
 
 public class OpenAISettingsBuilder
 {

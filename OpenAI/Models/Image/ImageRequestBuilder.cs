@@ -1,8 +1,8 @@
 using System.Net.Cache;
 using System.Security.Cryptography;
-using OpenAI.Entities.Image;
+using Fitomad.OpenAI.Entities.Image;
 
-namespace OpenAI.Models.Image;
+namespace Fitomad.OpenAI.Models.Image;
 
 public sealed class ImageRequestBuilder
 {
