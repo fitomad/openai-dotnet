@@ -45,7 +45,7 @@ public class ImageTests
         Assert.Throws<OpenAIException>(() =>
         {
             var request = new ImageRequestBuilder()
-                .WithModel(ImageModelKind.DALL_E_2)
+                .WithModel(ImageModelType.DALL_E_2)
                 .WithPrompt(stringBuilder.ToString())
                 .Build();
         });
@@ -64,7 +64,7 @@ public class ImageTests
         Assert.Throws<OpenAIException>(() =>
         {
             var request = new ImageRequestBuilder()
-                .WithModel(ImageModelKind.DALL_E_3)
+                .WithModel(ImageModelType.DALL_E_3)
                 .WithPrompt(stringBuilder.ToString())
                 .Build();
         });
@@ -79,7 +79,7 @@ public class ImageTests
         Assert.Throws<OpenAIException>(() =>
         {
             var request = new ImageRequestBuilder()
-                .WithModel(ImageModelKind.DALL_E_2)
+                .WithModel(ImageModelType.DALL_E_2)
                 .WithPrompt("Testing image count")
                 .WithImagesCount(imagesCount)
                 .Build();
@@ -95,7 +95,7 @@ public class ImageTests
         Assert.Throws<OpenAIException>(() =>
         {
             var request = new ImageRequestBuilder()
-                .WithModel(ImageModelKind.DALL_E_3)
+                .WithModel(ImageModelType.DALL_E_3)
                 .WithPrompt("Testing image count")
                 .WithImagesCount(imagesCount)
                 .Build();
@@ -106,7 +106,7 @@ public class ImageTests
     public async Task ImageRequest_Test()
     {
         ImageRequest request = new ImageRequestBuilder()
-            .WithModel(ImageModelKind.DALL_E_3)
+            .WithModel(ImageModelType.DALL_E_3)
             .WithPrompt("Un paisaje urbano, con algunos rascacielos de fondo aplicando un estilo de Dalí.")
             .WithImagesCount(1)
             .WithSize(DallE3Size.Square)

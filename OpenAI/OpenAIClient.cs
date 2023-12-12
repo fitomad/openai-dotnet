@@ -1,10 +1,14 @@
+using Fitomad.OpenAI.Models.Audio;
 using Fitomad.OpenAI.Models.Chat;
 using Fitomad.OpenAI.Models.Image;
+
+namespace Fitomad.OpenAI;
 
 public interface IOpenAIClient
 {
     public ChatModel ChatCompletion { get; }
     public ImageModel Image { get; }
+    public AudioModel Audio { get; }
 }
 
 public class OpenAIClient: IOpenAIClient
@@ -19,6 +23,11 @@ public class OpenAIClient: IOpenAIClient
     public ImageModel Image
     {
         get => new ImageModel(_httpClient);
+    }
+
+    public AudioModel Audio
+    {
+        get => new AudioModel(_httpClient);
     }
 
     public OpenAIClient(HttpClient httpClient)

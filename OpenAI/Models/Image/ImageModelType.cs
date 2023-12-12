@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Fitomad.OpenAI.Models.Image;
 
-public enum ImageModelKind
+public enum ImageModelType
 {
     DALL_E_2,
     DALL_E_3
@@ -10,12 +10,12 @@ public enum ImageModelKind
 
 public static class ImageModelKindExtension
 {
-    public static string GetValue(this ImageModelKind kind)
+    public static string GetValue(this ImageModelType kind)
     {
         var modelName = kind switch
         {
-            ImageModelKind.DALL_E_2 => "dall-e-2",
-            ImageModelKind.DALL_E_3 => "dall-e-3",
+            ImageModelType.DALL_E_2 => "dall-e-2",
+            ImageModelType.DALL_E_3 => "dall-e-3",
             _ => "dall-e-2"
         };
 

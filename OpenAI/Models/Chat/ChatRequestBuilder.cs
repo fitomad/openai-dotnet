@@ -1,3 +1,4 @@
+using Fitomad.OpenAI.Models;
 using Fitomad.OpenAI.Extensions;
 using Fitomad.OpenAI.Entities.Chat;
 
@@ -13,7 +14,7 @@ public sealed class ChatRequestBuilder
     private const string ToolRole = "role";
 
 
-    public ChatRequestBuilder WithModel(ChatModelKind modelKind)
+    public ChatRequestBuilder WithModel(ChatModelType modelKind)
     {
         return WithModel(modelKind.GetValue());
     }
@@ -104,7 +105,7 @@ public sealed class ChatRequestBuilder
         return this;
     }
 
-    public ChatRequestBuilder WithTemperatute(TemperatureKind value)
+    public ChatRequestBuilder WithTemperatute(Temperature value)
     {
         return WithTemperatute(value.GetValue());
     }

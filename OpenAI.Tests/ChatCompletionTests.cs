@@ -1,6 +1,7 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Fitomad.OpenAI.Models;
 using Fitomad.OpenAI.Models.Chat;
 using Fitomad.OpenAI.Entities.Chat;
 using System.ComponentModel;
@@ -22,18 +23,18 @@ public class ChatCompletionTests
     }
 
     [Theory]
-    [InlineData(ChatModelKind.GPT_3_5_TURBO)]
-    [InlineData(ChatModelKind.GPT_3_5_TURBO_16K)]
-    [InlineData(ChatModelKind.GPT_4_32K)]
-    [InlineData(ChatModelKind.GPT_4)]
-    [InlineData(ChatModelKind.GPT_4_VISION_PREVIEW)]
-    [InlineData(ChatModelKind.GPT_4_1106_PREVIEW)]
-    public void Chat_Models(ChatModelKind kind)
+    [InlineData(ChatModelType.GPT_3_5_TURBO)]
+    [InlineData(ChatModelType.GPT_3_5_TURBO_16K)]
+    [InlineData(ChatModelType.GPT_4_32K)]
+    [InlineData(ChatModelType.GPT_4)]
+    [InlineData(ChatModelType.GPT_4_VISION_PREVIEW)]
+    [InlineData(ChatModelType.GPT_4_1106_PREVIEW)]
+    public void Chat_Models(ChatModelType kind)
     {
         ChatRequest request = new ChatRequestBuilder()
             .WithModel(kind)
             .WithUserMessage("¿Cuál es la distancia de la Tierra al Sol?")
-            .WithTemperatute(TemperatureKind.Precise)
+            .WithTemperatute(Temperature.Precise)
             .Build();
         
     }
@@ -56,7 +57,7 @@ public class ChatCompletionTests
         Assert.Throws<OpenAIException>(() =>
         {
             ChatRequest request = new ChatRequestBuilder()
-                .WithModel(ChatModelKind.GPT_3_5_TURBO)
+                .WithModel(ChatModelType.GPT_3_5_TURBO)
                 .WithTemperatute(0.8)
                 .Build();
         });
@@ -78,10 +79,10 @@ public class ChatCompletionTests
     public void Chat_SystemAndUserMessages()
     {
         ChatRequest request = new ChatRequestBuilder()
-            .WithModel(ChatModelKind.GPT_3_5_TURBO)
+            .WithModel(ChatModelType.GPT_3_5_TURBO)
             .WithSystemMessage("Eres un profesor universitario de Astrofísica.")
             .WithUserMessage("¿En qué consiste la Constante Cosmológica de Einstein?")
-            .WithTemperatute(TemperatureKind.Precise)
+            .WithTemperatute(Temperature.Precise)
             .Build();
     }
 
@@ -91,7 +92,7 @@ public class ChatCompletionTests
         Assert.Throws<OpenAIException>(() =>
         {
             ChatRequest request = new ChatRequestBuilder()
-                .WithModel(ChatModelKind.GPT_3_5_TURBO)
+                .WithModel(ChatModelType.GPT_3_5_TURBO)
                 .WithSystemMessage("Eres un profesor universitario de Astrofísica.")
                 .WithUserMessage("¿En qué consiste la Constante Cosmológica de Einstein?")
                 .WithTemperatute(-3.0)
@@ -105,7 +106,7 @@ public class ChatCompletionTests
         Assert.Throws<OpenAIException>(() =>
         {
             ChatRequest request = new ChatRequestBuilder()
-                .WithModel(ChatModelKind.GPT_3_5_TURBO)
+                .WithModel(ChatModelType.GPT_3_5_TURBO)
                 .WithSystemMessage("Eres un profesor universitario de Astrofísica.")
                 .WithUserMessage("¿En qué consiste la Constante Cosmológica de Einstein?")
                 .WithTemperatute(3.0)
@@ -119,7 +120,7 @@ public class ChatCompletionTests
         Assert.Throws<OpenAIException>(() =>
         {
             ChatRequest request = new ChatRequestBuilder()
-                .WithModel(ChatModelKind.GPT_3_5_TURBO)
+                .WithModel(ChatModelType.GPT_3_5_TURBO)
                 .WithSystemMessage("Eres un profesor universitario de Astrofísica.")
                 .WithUserMessage("¿En qué consiste la Constante Cosmológica de Einstein?")
                 .WithFrequencyPenalty(-3.0)
@@ -133,7 +134,7 @@ public class ChatCompletionTests
         Assert.Throws<OpenAIException>(() =>
         {
             ChatRequest request = new ChatRequestBuilder()
-                .WithModel(ChatModelKind.GPT_3_5_TURBO)
+                .WithModel(ChatModelType.GPT_3_5_TURBO)
                 .WithSystemMessage("Eres un profesor universitario de Astrofísica.")
                 .WithUserMessage("¿En qué consiste la Constante Cosmológica de Einstein?")
                 .WithFrequencyPenalty(3.0)
@@ -147,7 +148,7 @@ public class ChatCompletionTests
         Assert.Throws<OpenAIException>(() =>
         {
             ChatRequest request = new ChatRequestBuilder()
-                .WithModel(ChatModelKind.GPT_3_5_TURBO)
+                .WithModel(ChatModelType.GPT_3_5_TURBO)
                 .WithSystemMessage("Eres un profesor universitario de Astrofísica.")
                 .WithUserMessage("¿En qué consiste la Constante Cosmológica de Einstein?")
                 .WithPresencePenalty(-3.0)
@@ -161,7 +162,7 @@ public class ChatCompletionTests
         Assert.Throws<OpenAIException>(() =>
         {
             ChatRequest request = new ChatRequestBuilder()
-                .WithModel(ChatModelKind.GPT_3_5_TURBO)
+                .WithModel(ChatModelType.GPT_3_5_TURBO)
                 .WithSystemMessage("Eres un profesor universitario de Astrofísica.")
                 .WithUserMessage("¿En qué consiste la Constante Cosmológica de Einstein?")
                 .WithPresencePenalty(3.0)
@@ -173,10 +174,10 @@ public class ChatCompletionTests
     public async Task ChatRequest_Test()
     {
         ChatRequest request = new ChatRequestBuilder()
-            .WithModel(ChatModelKind.GPT_3_5_TURBO)
+            .WithModel(ChatModelType.GPT_3_5_TURBO)
             .WithSystemMessage("Eres un profesor de alumnos de 10 años.")
             .WithUserMessage("Explícame qué es una estrella.")
-            .WithTemperatute(TemperatureKind.Precise)
+            .WithTemperatute(Temperature.Precise)
             .WithReponseFormat(ChatResponseFormat.Text)
             .Build();
 

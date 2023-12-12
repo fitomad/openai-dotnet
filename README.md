@@ -6,6 +6,7 @@ Fitomad.OpenAI provides various options to customize your requests and responses
 
 ## Dependency Injection
 
+This is an example of DI in an Unit Testing (xunit) environment.
 ```cs
 var aiSettings = new OpenAISettingsBuilder()
     .WithApiKey(_apiKey)
@@ -13,6 +14,20 @@ var aiSettings = new OpenAISettingsBuilder()
 
 var services = new ServiceCollection();
 services.AddOpenAIHttpClient(settings: aiSettings);
+```
+
+Below this lines you will find an example of the usage of DI in ASP.NET
+
+```cs
+using Fitomad.OpenAI
+
+...
+
+var openAISettings = new OpenAISettingsBuilder()
+    .WithApiKey("sk...987")
+    .Build();
+
+builder.Services.AddOpenAIHttpClient(settings: openAISettings);
 ```
 
 ## Chat Completion
@@ -44,3 +59,12 @@ ImageRequest request = new ImageRequestBuilder()
 
 ImageResponse imageResponse = await client.Image.CreateImageAsync(request);
 ```
+
+## Changes
+
+### 0.2.1
+
+- Enumeration `TemperatureKind` now is `Temperature` and has been moved to `Fitomad.OpenAI.Models` namespace.
+- Enumeration `ImageModelKind` now is `ImageModelType`
+- Enumeration `ChatModelKind` now is `ChatModelType`
+- Method `AddOpenAIHttpClient` is now in `Fitomad.OpenAI` namespace.
