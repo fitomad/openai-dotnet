@@ -2,11 +2,17 @@ using System.Text;
 using System.Text.Json;
 using System.Net.Http.Json;
 using Fitomad.OpenAI.Entities.Audio;
-using System.Net.Http.Headers;
 
 namespace Fitomad.OpenAI.Models.Audio;
 
-public sealed class AudioModel
+public interface IAudioModel
+{
+    public Task<SpeechResponse> CreateSpeech(SpeechRequest request);
+    public Task<TranscriptionResponse> CreateTranscription(TranscriptionRequest request);
+    public Task<TranslationResponse> CreateTranslation(TranslationRequest request);
+}
+
+public sealed class AudioModel: IAudioModel
 {
     private HttpClient _httpClient;
 

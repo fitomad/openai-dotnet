@@ -6,7 +6,12 @@ using Fitomad.OpenAI.Entities.Image;
 
 namespace Fitomad.OpenAI.Models.Image;
 
-public sealed class ImageModel
+public interface IImageModel
+{
+    public Task<ImageResponse> CreateImageAsync(ImageRequest request);
+}
+
+public sealed class ImageModel: IImageModel
 {
     private HttpClient _httpClient;
 
