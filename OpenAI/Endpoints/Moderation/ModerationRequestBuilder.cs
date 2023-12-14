@@ -1,7 +1,7 @@
 using Fitomad.OpenAI.Extensions;
 using Fitomad.OpenAI.Entities.Moderation;
 
-namespace Fitomad.OpenAI.Models.Moderation;
+namespace Fitomad.OpenAI.Endpoints.Moderation;
 
 public sealed class ModerationRequestBuilder
 {

@@ -1,8 +1,8 @@
-using Fitomad.OpenAI.Models;
+using Fitomad.OpenAI.Endpoints;
 using Fitomad.OpenAI.Extensions;
 using Fitomad.OpenAI.Entities.Chat;
 
-namespace Fitomad.OpenAI.Models.Chat;
+namespace Fitomad.OpenAI.Endpoints.Chat;
 
 public sealed class ChatRequestBuilder
 {

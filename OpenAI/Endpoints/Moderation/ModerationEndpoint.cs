@@ -4,18 +4,18 @@ using System.Net.Http.Json;
 
 using Fitomad.OpenAI.Entities.Moderation;
 
-namespace Fitomad.OpenAI.Models.Moderation;
+namespace Fitomad.OpenAI.Endpoints.Moderation;
 
-public interface IModerationModel
+public interface IModerationEndpoint
 {
     public Task<ModerationResponse> CreateModeration(ModerationRequest request);
 }
 
-public sealed class ModerationModel: IModerationModel
+public sealed class ModerationEndpoint: IModerationEndpoint
 {
     private HttpClient _httpClient;
 
-    internal ModerationModel(HttpClient httpClient)
+    internal ModerationEndpoint(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

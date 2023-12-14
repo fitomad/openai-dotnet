@@ -3,20 +3,20 @@ using System.Text.Json;
 using System.Net.Http.Json;
 using Fitomad.OpenAI.Entities.Audio;
 
-namespace Fitomad.OpenAI.Models.Audio;
+namespace Fitomad.OpenAI.Endpoints.Audio;
 
-public interface IAudioModel
+public interface IAudioEndpoint
 {
     public Task<SpeechResponse> CreateSpeech(SpeechRequest request);
     public Task<TranscriptionResponse> CreateTranscription(TranscriptionRequest request);
     public Task<TranslationResponse> CreateTranslation(TranslationRequest request);
 }
 
-public sealed class AudioModel: IAudioModel
+public sealed class AudioEndpoint: IAudioEndpoint
 {
     private HttpClient _httpClient;
 
-    internal AudioModel(HttpClient httpClient)
+    internal AudioEndpoint(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

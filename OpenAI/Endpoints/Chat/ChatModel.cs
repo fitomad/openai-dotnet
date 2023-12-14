@@ -3,19 +3,19 @@ using System.Text.Json;
 using System.Net.Http.Json;
 using Fitomad.OpenAI.Entities.Chat;
 
-namespace Fitomad.OpenAI.Models.Chat;
+namespace Fitomad.OpenAI.Endpoints.Chat;
 
-public interface IChatModel
+public interface IChatEndpoint
 {
     public Task<ChatResponse> CreateChatAsync(ChatRequest chatRequest);
     public Task<ChatResponse> ExplainImageAsync(string userInput, string imageUrl, int tokensCount);
 }
 
-public sealed class ChatModel: IChatModel
+public sealed class ChatEndpoint: IChatEndpoint
 {
     private HttpClient _httpClient;
 
-    internal ChatModel(HttpClient httpClient)
+    internal ChatEndpoint(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

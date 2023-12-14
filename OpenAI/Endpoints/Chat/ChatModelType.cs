@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace Fitomad.OpenAI.Models.Chat;
+namespace Fitomad.OpenAI.Endpoints.Chat;
 
 public enum ChatModelType
 {

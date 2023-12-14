@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Security.Cryptography;
 
-namespace Fitomad.OpenAI.Models;
+namespace Fitomad.OpenAI.Endpoints;
 
 public enum Temperature
 {

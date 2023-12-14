@@ -1,11 +1,11 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Fitomad.OpenAI.Models;
+using Fitomad.OpenAI.Endpoints;
 using System.ComponentModel;
 using Fitomad.OpenAI;
 using Fitomad.OpenAI.Entities.Moderation;
-using Fitomad.OpenAI.Models.Moderation;
+using Fitomad.OpenAI.Endpoints.Moderation;
 
 namespace Fitomad.OpenAI.Tests;
 

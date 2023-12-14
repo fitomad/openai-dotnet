@@ -1,11 +1,11 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Fitomad.OpenAI.Models;
+using Fitomad.OpenAI.Endpoints;
 using System.ComponentModel;
 using Fitomad.OpenAI;
 using Fitomad.OpenAI.Entities.Audio;
-using Fitomad.OpenAI.Models.Audio;
+using Fitomad.OpenAI.Endpoints.Audio;
 
 namespace Fitomad.OpenAI.Tests;
 

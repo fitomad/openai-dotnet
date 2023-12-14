@@ -1,6 +1,6 @@
 using Fitomad.OpenAI.Entities.Audio;
 
-namespace Fitomad.OpenAI.Models.Audio;
+namespace Fitomad.OpenAI.Endpoints.Audio;
 
 public sealed class SpeechRequestBuilder
 {

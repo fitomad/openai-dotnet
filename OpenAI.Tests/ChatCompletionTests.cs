@@ -1,8 +1,8 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Fitomad.OpenAI.Models;
-using Fitomad.OpenAI.Models.Chat;
+using Fitomad.OpenAI.Endpoints;
+using Fitomad.OpenAI.Endpoints.Chat;
 using Fitomad.OpenAI.Entities.Chat;
 using System.ComponentModel;
 using Fitomad.OpenAI.Extensions;

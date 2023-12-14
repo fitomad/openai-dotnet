@@ -1,6 +1,6 @@
 namespace Fitomad.OpenAI.Tests;
 
-using Fitomad.OpenAI.Models.Chat;
+using Fitomad.OpenAI.Endpoints.Chat;
 
 public class ClientTests
 {

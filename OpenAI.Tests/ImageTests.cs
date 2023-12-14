@@ -1,7 +1,7 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Fitomad.OpenAI.Models.Image;
+using Fitomad.OpenAI.Endpoints.Image;
 using Fitomad.OpenAI.Entities.Image;
 using System.ComponentModel;
 using Fitomad.OpenAI.Extensions;

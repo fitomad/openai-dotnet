@@ -1,4 +1,4 @@
-namespace Fitomad.OpenAI.Models.Audio;
+namespace Fitomad.OpenAI.Endpoints.Audio;
 
 public enum TranscriptionResponseFormat
 {

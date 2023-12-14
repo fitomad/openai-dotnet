@@ -1,67 +1,64 @@
 using Fitomad.OpenAI.Entities.Audio;
 using Fitomad.OpenAI.Extensions;
 
-namespace Fitomad.OpenAI.Models.Audio;
+namespace Fitomad.OpenAI.Endpoints.Audio;
 
-using TranslationModelType = Fitomad.OpenAI.Models.Audio.TranscriptionModelType;
-using TranslationResponseFormat = Fitomad.OpenAI.Models.Audio.TranscriptionResponseFormat;
-
-public sealed class TranslationRequestBuilder
+public sealed class TranscriptionRequestBuilder
 {
-    private TranslationRequest _request = new TranslationRequest();
+    private TranscriptionRequest _request = new TranscriptionRequest();
 
-    public TranslationRequestBuilder WithFile(string name)
+    public TranscriptionRequestBuilder WithFile(string name)
     {
         _request.File = name;
         return this;
     }
 
-    public TranslationRequestBuilder WithModel(TranslationModelType model)
+    public TranscriptionRequestBuilder WithModel(TranscriptionModelType model)
     {
         return WithModel(model.GetValue());
     }
 
-    public TranslationRequestBuilder WithModel(string modelName)
+    public TranscriptionRequestBuilder WithModel(string modelName)
     {
         _request.Model = modelName;
         return this;
     }
 
-    public TranslationRequestBuilder WithLanguage(string languageIsoCode)
+    public TranscriptionRequestBuilder WithLanguage(string languageIsoCode)
     {
         _request.Language = languageIsoCode;
         return this;
     }
 
-    public TranslationRequestBuilder WithPrompt(string prompt)
+    public TranscriptionRequestBuilder WithPrompt(string prompt)
     {
         _request.Prompt = prompt;
         return this;
     }
 
-    public TranslationRequestBuilder WithResponseFormat(TranslationResponseFormat format)
+    public TranscriptionRequestBuilder WithResponseFormat(TranscriptionResponseFormat format)
     {
         return WithResponseFormat(format.GetValue());
     }
 
-    public TranslationRequestBuilder WithResponseFormat(string formatName)
+    public TranscriptionRequestBuilder WithResponseFormat(string formatName)
     {
         _request.ResponseFormat = formatName;
         return this;
     }
 
-    public TranslationRequestBuilder WithTemperature(Temperature temperature)
+    public TranscriptionRequestBuilder WithTemperature(Temperature temperature)
     {
         return WithTemperature(temperature.GetValue());
     }
 
-    public TranslationRequestBuilder WithTemperature(double value)
+    public TranscriptionRequestBuilder WithTemperature(double value)
     {
         _request.Temperatute = value;
         return this;
     }
 
-    public TranslationRequest Build()
+    public TranscriptionRequest Build()
     {
         if(string.IsNullOrEmpty(_request.File))
         {

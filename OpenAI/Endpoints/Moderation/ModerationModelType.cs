@@ -1,4 +1,4 @@
-namespace Fitomad.OpenAI.Models.Moderation;
+namespace Fitomad.OpenAI.Endpoints.Moderation;
 
 public enum ModerationModelType
 {

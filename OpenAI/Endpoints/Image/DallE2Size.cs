@@ -1,4 +1,4 @@
-namespace Fitomad.OpenAI.Models.Image;
+namespace Fitomad.OpenAI.Endpoints.Image;
 
 public enum DallE2Size
 {

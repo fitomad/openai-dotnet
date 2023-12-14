@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Fitomad.OpenAI.Models.Image;
+namespace Fitomad.OpenAI.Endpoints.Image;
 
 public enum ImageModelType
 {
