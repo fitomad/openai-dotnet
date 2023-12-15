@@ -4,10 +4,15 @@ namespace Fitomad.OpenAI.Entities.Audio;
 
 public record SpeechRequest
 {
-    public string Model { get; internal set; }
+    [JsonPropertyName("model")]
+    public string Model { get; set; }
+    [JsonPropertyName("input")]
     public string Input { get; internal set; }
+    [JsonPropertyName("voice")]
     public string Voice { get; internal set; }
+    [JsonPropertyName("response_format")]
     public string ResponseFormat { get; internal set; }
+    [JsonPropertyName("speed")]
     public double Speed { get; internal set; }
 
     internal SpeechRequest()

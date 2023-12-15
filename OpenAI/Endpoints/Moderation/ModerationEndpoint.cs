@@ -23,7 +23,6 @@ public sealed class ModerationEndpoint: IModerationEndpoint
     public async Task<ModerationResponse> CreateModeration(ModerationRequest request)
     {
         var payload = JsonSerializer.Serialize(request);
-        Console.WriteLine(payload);
         var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
         HttpResponseMessage response = await _httpClient.PostAsync(Endpoint.Create, httpContent);
         

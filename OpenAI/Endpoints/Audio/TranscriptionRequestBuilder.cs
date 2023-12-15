@@ -7,9 +7,18 @@ public sealed class TranscriptionRequestBuilder
 {
     private TranscriptionRequest _request = new TranscriptionRequest();
 
-    public TranscriptionRequestBuilder WithFile(string name)
+    public TranscriptionRequestBuilder WithFile(string path)
     {
-        _request.File = name;
+        if(File.Exists(path))
+        {
+            byte[] content = File.ReadAllBytes(path);
+            _request.File = content;
+        } 
+        else
+        {
+            throw new OpenAIException($"File at path {path} doesn't exists.");
+        } 
+
         return this;
     }
 
@@ -60,9 +69,9 @@ public sealed class TranscriptionRequestBuilder
 
     public TranscriptionRequest Build()
     {
-        if(string.IsNullOrEmpty(_request.File))
+        if(_request.File.Length == 0 || _request.File is null)
         {
-            throw new OpenAIException("A valid file is mandatory for translation operations.");
+            throw new OpenAIException("File content is empty and It is mandatory for transcription operations.");
         }
 
         if(string.IsNullOrEmpty(_request.Model))

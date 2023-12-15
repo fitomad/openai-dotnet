@@ -1,6 +1,7 @@
 using Fitomad.OpenAI.Endpoints.Audio;
 using Fitomad.OpenAI.Endpoints.Chat;
 using Fitomad.OpenAI.Endpoints.Image;
+using Fitomad.OpenAI.Endpoints.Models;
 using Fitomad.OpenAI.Endpoints.Moderation;
 
 namespace Fitomad.OpenAI;
@@ -11,6 +12,7 @@ public interface IOpenAIClient
     public ImageEndpoint Image { get; }
     public AudioEndpoint Audio { get; }
     public ModerationEndpoint Moderation { get; }
+    public ModelEndpoint Models { get; }
 }
 
 public class OpenAIClient: IOpenAIClient
@@ -35,6 +37,11 @@ public class OpenAIClient: IOpenAIClient
     public ModerationEndpoint Moderation
     {
         get => new ModerationEndpoint(_httpClient);
+    }
+
+    public ModelEndpoint Models
+    {
+        get => new ModelEndpoint(_httpClient);
     }
 
     public OpenAIClient(HttpClient httpClient)

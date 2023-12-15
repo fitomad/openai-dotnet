@@ -1,6 +1,9 @@
+using System.Text.Json.Serialization;
+
 namespace Fitomad.OpenAI.Entities.Audio;
 
 public record TranscriptionResponse
 {
-    public string Text { get; internal init; }
+    [JsonPropertyName("text")]
+    public string Text { get; init; }
 }

@@ -10,9 +10,18 @@ public sealed class TranslationRequestBuilder
 {
     private TranslationRequest _request = new TranslationRequest();
 
-    public TranslationRequestBuilder WithFile(string name)
+    public TranslationRequestBuilder WithFile(string path)
     {
-        _request.File = name;
+        if(File.Exists(path))
+        {
+            byte[] content = File.ReadAllBytes(path);
+            _request.File = content;
+        } 
+        else
+        {
+            throw new OpenAIException($"File at path {path} doesn't exists.");
+        } 
+
         return this;
     }
 
@@ -63,9 +72,9 @@ public sealed class TranslationRequestBuilder
 
     public TranslationRequest Build()
     {
-        if(string.IsNullOrEmpty(_request.File))
+        if(_request.File is null || _request.File.Length == 0)
         {
-            throw new OpenAIException("A valid file is mandatory for translation operations.");
+            throw new OpenAIException("A valid file content is mandatory for translation operations.");
         }
 
         if(string.IsNullOrEmpty(_request.Model))

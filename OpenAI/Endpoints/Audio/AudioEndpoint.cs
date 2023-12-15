@@ -26,8 +26,13 @@ public sealed class AudioEndpoint: IAudioEndpoint
         var payload = JsonSerializer.Serialize(request);
         var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
         HttpResponseMessage response = await _httpClient.PostAsync(Endpoint.Speech, httpContent);
-
-        var speechResponse = await response.Content.ReadFromJsonAsync<SpeechResponse>();
+        byte[] soundContentFile = await response.Content.ReadAsByteArrayAsync();
+        
+        var speechResponse = new SpeechResponse
+        {
+            ResponseFormat = request.ResponseFormat,
+            Content = soundContentFile
+        };
 
         return speechResponse;
     }

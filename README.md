@@ -1,6 +1,6 @@
 # OpenAI .NET library
 
-Fitomad.OpenAI is a .NET library that allows you to access the powerful AI models from OpenAI, such as GPT, DALL-E, and Whisper, through a simple and intuitive interface. You can use this framework to generate text, code, images, audio, and more, with just a few lines of code. 
+Fitomad.OpenAI is a community-maintained .NET library that allows you to access the powerful AI models from OpenAI, such as GPT, DALL-E, and Whisper, through a simple and intuitive interface. You can use this framework to generate text, code, images, audio, and more, with just a few lines of code. 
 
 Fitomad.OpenAI provides various options to customize your requests and responses. Whether you want to create a chatbot, a content generator, a sentiment analyzer, a translator, or any other AI-powered application, Fitomad.OpenAI can help you achieve your goals with ease and efficiency.
 
@@ -15,10 +15,13 @@ Currently I bring support for the following OpenAI models:
     - Translation
     - Transcription
 - Moderation
+- Models
 
 ## OpenAI API key storage recommendations
 
 ### User secrets
+
+This is the recommended storage system for development. For a detailed information about the usage of this storage system, please refer to [Safe storage of app secrets in development in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=linux) article.
 
 ```cs
 var configuration = new ConfigurationBuilder()
@@ -31,6 +34,14 @@ _apiKey = configuration.GetValue<string>("OpenAI:ApiKey");
 ### Environment variables
 
 Environment variables are used to avoid storage of app secrets in code or in local configuration files. Environment variables override configuration values for all previously specified configuration sources.
+
+```cs
+using Fitomad.OpenAI;
+
+var openAISettings = new OpenAISettingsBuilder()
+    .WithApWithApiKeyFromEnvironmentVariableiKey("OpenAI:ApiKey")
+    .Build();
+```
 
 
 ## Dependency Injection
@@ -67,10 +78,10 @@ using Fitomad.OpenAI.Entities.Chat;
 using Fitomad.OpenAI.Endpoints.Chat;
 
 ChatRequest request = new ChatRequestBuilder()
-    .WithModel(ChatModelKind.GPT_3_5_TURBO)
+    .WithModel(ChatModelType.GPT_3_5_TURBO)
     .WithSystemMessage("Eres un profesor de alumnos de 10 años.")
     .WithUserMessage("Explícame qué es una estrella.")
-    .WithTemperatute(TemperatureKind.Precise)
+    .WithTemperatute(Temperature.Precise)
     .WithReponseFormat(ChatResponseFormat.Text)
     .Build();
 
@@ -82,7 +93,7 @@ ChatResponse chatResponse = await client.ChatCompletion.CreateChatAsync(request)
 ```cs
 ImageRequest request = new ImageRequestBuilder()
     .WithModel(ImageModelKind.DALL_E_3)
-    .WithPrompt("Un paisaje urbano, con algunos rascacielos de fondo aplicando un estilo de Dalí.")
+    .WithPrompt("Un paisaje urbano, con algunos rascacielos de fondo aplicando el estilo de Dalí.")
     .WithImagesCount(1)
     .WithSize(DallE3Size.Square)
     .WithQuality(DallE3Quality.HD)
@@ -93,10 +104,19 @@ ImageRequest request = new ImageRequestBuilder()
 ImageResponse imageResponse = await client.Image.CreateImageAsync(request);
 ```
 
+## Audio
+
+
+## Moderation
+
+## Models
+
 ## Changes
 
 ### 0.2.1
 
+- New package icon 🎉
+- Namespace `Fitomad.OpenAI.Models` now is `Fitomad.OpenAI.Endpoints`
 - Enumeration `TemperatureKind` now is `Temperature` and has been moved to `Fitomad.OpenAI.Endpoints` namespace.
 - Enumeration `ImageModelKind` now is `ImageModelType`
 - Enumeration `ChatModelKind` now is `ChatModelType`
