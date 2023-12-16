@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Net.Http;
 using System.Net.Http.Json;
 using Fitomad.OpenAI.Entities.Audio;
 
@@ -39,24 +40,108 @@ public sealed class AudioEndpoint: IAudioEndpoint
 
     public async Task<TranscriptionResponse> CreateTranscription(TranscriptionRequest request)
     {
-        var payload = JsonSerializer.Serialize(request);
-        var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
-        HttpResponseMessage response = await _httpClient.PostAsync(Endpoint.Transcription, httpContent);
+        var multipartContent = MakeMultipartContent(request: request);
+        HttpResponseMessage response = await _httpClient.PostAsync(Endpoint.Transcription, multipartContent);
 
-        var transcriptionResponse = await response.Content.ReadFromJsonAsync<TranscriptionResponse>();
+        TranscriptionResponse transcriptionResponse;
+
+        switch(request.ResponseFormat)
+        {
+            case "json":
+            case "verbose_json":
+                transcriptionResponse = await response.Content.ReadFromJsonAsync<TranscriptionResponse>();
+                break;
+            default:
+                transcriptionResponse = new TranscriptionResponse
+                {
+                    Text = await response.Content.ReadAsStringAsync()
+                };
+                break;
+        }
 
         return transcriptionResponse;
     }
 
     public async Task<TranslationResponse> CreateTranslation(TranslationRequest request)
     {
-        var payload = JsonSerializer.Serialize(request);
-        var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
-        HttpResponseMessage response = await _httpClient.PostAsync(Endpoint.Transcription, httpContent);
+        var multipartContent = MakeMultipartContent(request: request);
+        HttpResponseMessage response = await _httpClient.PostAsync(Endpoint.Translation, multipartContent);
 
-        var translationResponse = await response.Content.ReadFromJsonAsync<TranslationResponse>();
+        TranslationResponse translationResponse;
+
+        switch(request.ResponseFormat)
+        {
+            case "json":
+            case "verbose_json":
+                translationResponse = await response.Content.ReadFromJsonAsync<TranslationResponse>();
+                break;
+            default:
+                translationResponse = new TranslationResponse
+                {
+                    Text = await response.Content.ReadAsStringAsync()
+                };
+                break;
+        }
 
         return translationResponse;
+    }
+
+    private MultipartFormDataContent MakeMultipartContent(TranscriptionRequest request)
+    {
+        var multipartContent = new MultipartFormDataContent();
+
+        multipartContent.Add(new StringContent(request.Model), "model");
+        multipartContent.Add(new StringContent(request.ResponseFormat), "response_format");
+        multipartContent.Add(new StringContent(request.TemperatureStringValue), "temperature");
+
+        var fileStream = File.OpenRead(request.File);
+        var memoryStream =new MemoryStream();
+        fileStream.CopyTo(memoryStream);
+
+        multipartContent.Add(new ByteArrayContent(memoryStream.ToArray()), "file", fileName: request.FileName);
+        
+        if(TranscriptionRequest.IsValid(request.Language))
+        {
+            multipartContent.Add(new StringContent(request.Language), "language");
+        }
+
+        if(TranscriptionRequest.IsValid(request.Prompt))
+        {
+            multipartContent.Add(new StringContent(request.Prompt), "prompt");
+        }
+
+        memoryStream.Close();
+
+        return multipartContent;
+    }
+
+    private MultipartFormDataContent MakeMultipartContent(TranslationRequest request)
+    {
+        var multipartContent = new MultipartFormDataContent();
+
+        multipartContent.Add(new StringContent(request.Model), "model");
+        multipartContent.Add(new StringContent(request.ResponseFormat), "response_format");
+        multipartContent.Add(new StringContent(request.TemperatureStringValue), "temperature");
+
+        var fileStream = File.OpenRead(request.File);
+        var memoryStream =new MemoryStream();
+        fileStream.CopyTo(memoryStream);
+
+        multipartContent.Add(new ByteArrayContent(memoryStream.ToArray()), "file", fileName: request.FileName);
+        
+        if(TranscriptionRequest.IsValid(request.Language))
+        {
+            multipartContent.Add(new StringContent(request.Language), "language");
+        }
+
+        if(TranscriptionRequest.IsValid(request.Prompt))
+        {
+            multipartContent.Add(new StringContent(request.Prompt), "prompt");
+        }
+
+        memoryStream.Close();
+
+        return multipartContent;
     }
 
     internal static class Endpoint

@@ -5,7 +5,7 @@ namespace Fitomad.OpenAI.Entities.Audio;
 public record TranslationRequest
 {
     [JsonPropertyName("file")]
-    public byte[] File { get; internal set; }
+    public string File { get; internal set; }
     [JsonPropertyName("model")]
     public string Model { get; internal set; }
     [JsonPropertyName("language")]
@@ -16,4 +16,13 @@ public record TranslationRequest
     public string ResponseFormat { get; internal set; }
     [JsonPropertyName("temperature")]
     public double Temperatute { get; internal set; }
+
+    public string FileName
+    {
+        get => Path.GetFileName(File);
+    }
+
+    public string TemperatureStringValue {
+        get => Temperatute.ToString();
+    }
 }

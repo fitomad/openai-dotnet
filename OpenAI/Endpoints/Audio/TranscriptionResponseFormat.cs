@@ -4,7 +4,7 @@ public enum TranscriptionResponseFormat
 {
     Json,
     Text,
-    STR,
+    SRT,
     VerboseJson,
     VTT
 }
@@ -17,7 +17,7 @@ public static class TranscriptionResponseFormatExtension
         {
             TranscriptionResponseFormat.Json => "json",
             TranscriptionResponseFormat.Text => "text",
-            TranscriptionResponseFormat.STR => "str",
+            TranscriptionResponseFormat.SRT => "srt",
             TranscriptionResponseFormat.VerboseJson => "verbose_json",
             TranscriptionResponseFormat.VTT => "vtt",
             _ => "json"

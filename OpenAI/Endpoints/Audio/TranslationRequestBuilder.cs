@@ -14,8 +14,7 @@ public sealed class TranslationRequestBuilder
     {
         if(File.Exists(path))
         {
-            byte[] content = File.ReadAllBytes(path);
-            _request.File = content;
+            _request.File = path;
         } 
         else
         {

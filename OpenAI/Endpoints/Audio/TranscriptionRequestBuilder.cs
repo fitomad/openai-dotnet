@@ -11,8 +11,7 @@ public sealed class TranscriptionRequestBuilder
     {
         if(File.Exists(path))
         {
-            byte[] content = File.ReadAllBytes(path);
-            _request.File = content;
+            _request.File = path;
         } 
         else
         {
@@ -69,7 +68,7 @@ public sealed class TranscriptionRequestBuilder
 
     public TranscriptionRequest Build()
     {
-        if(_request.File.Length == 0 || _request.File is null)
+        if(string.IsNullOrEmpty(_request.File))
         {
             throw new OpenAIException("File content is empty and It is mandatory for transcription operations.");
         }

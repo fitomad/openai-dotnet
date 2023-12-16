@@ -9,6 +9,10 @@ using Fitomad.OpenAI.Endpoints.Audio;
 
 namespace Fitomad.OpenAI.Tests;
 
+using TranslationModelType = Fitomad.OpenAI.Endpoints.Audio.TranscriptionModelType;
+using TranslationResponseFormat = Fitomad.OpenAI.Endpoints.Audio.TranscriptionResponseFormat;
+
+
 public class AudioTests
 {
     private const string ElQuijote = "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.";
@@ -64,13 +68,31 @@ public class AudioTests
 
         TranscriptionRequest request = new TranscriptionRequestBuilder()
             .WithModel(TranscriptionModelType.Whisper1)
-            .WithResponseFormat(TranscriptionResponseFormat.Text)
-            .WithFile("")
+            .WithResponseFormat(TranscriptionResponseFormat.Json)
+            .WithFile("/Users/adolfo/Desktop/testing-audio.mp3")
             .Build();
 
         TranscriptionResponse response = await _client.Audio.CreateTranscription(request);
 
         Assert.NotNull(response);
         Assert.NotEmpty(response.Text);
+    }
+
+    [Fact]
+    public async Task Audio_TestTranslation()
+    {
+        Assert.NotNull(_client);
+
+        TranslationRequest request = new TranslationRequestBuilder()
+            .WithModel(TranslationModelType.Whisper1)
+            .WithResponseFormat(TranslationResponseFormat.Json)
+            .WithFile("/Users/adolfo/Desktop/testing-audio.mp3")
+            .Build();
+
+        TranslationResponse response = await _client.Audio.CreateTranslation(request);
+
+        Assert.NotNull(response);
+        Assert.NotEmpty(response.Text);
+        Console.WriteLine($"🙊 {response.Text}");
     }
 }

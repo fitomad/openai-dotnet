@@ -61,6 +61,8 @@ public class ModelTests
     [InlineData("code-search-babbage-text-001")]
     public async Task Models_TestRetrieve(string modelName)
     {
+        Assert.NotNull(_client);
 
+        ModelResponse response = await _client.Models.Retrieve(model: modelName);
     }
 }
