@@ -93,6 +93,5 @@ public class AudioTests
 
         Assert.NotNull(response);
         Assert.NotEmpty(response.Text);
-        Console.WriteLine($"🙊 {response.Text}");
     }
 }
