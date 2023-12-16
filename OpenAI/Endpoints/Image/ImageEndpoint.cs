@@ -4,13 +4,18 @@ using System.Net.Http.Json;
 
 using Fitomad.OpenAI.Entities.Image;
 
-namespace Fitomad.OpenAI.Models.Image;
+namespace Fitomad.OpenAI.Endpoints.Image;
 
-public sealed class ImageModel
+public interface IImageEndpoint
+{
+    public Task<ImageResponse> CreateImageAsync(ImageRequest request);
+}
+
+public sealed class ImageEndpoint: IImageEndpoint
 {
     private HttpClient _httpClient;
 
-    internal ImageModel(HttpClient httpClient)
+    internal ImageEndpoint(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

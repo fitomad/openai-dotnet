@@ -2,13 +2,13 @@ using System.Net.Cache;
 using System.Security.Cryptography;
 using Fitomad.OpenAI.Entities.Image;
 
-namespace Fitomad.OpenAI.Models.Image;
+namespace Fitomad.OpenAI.Endpoints.Image;
 
 public sealed class ImageRequestBuilder
 {
     private ImageRequest _request = new ImageRequest();
 
-    public ImageRequestBuilder WithModel(ImageModelKind modelKind)
+    public ImageRequestBuilder WithModel(ImageModelType modelKind)
     {
         return WithModel(modelKind.GetValue());
     }
@@ -74,7 +74,7 @@ public sealed class ImageRequestBuilder
             throw new OpenAIException("You must set a valid prompt.");
         }
 
-        if(_request.ModelName == ImageModelKind.DALL_E_3.GetValue())
+        if(_request.ModelName == ImageModelType.DALL_E_3.GetValue())
         {
             CheckRequestParameterForDallE3();
         }

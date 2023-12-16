@@ -2,7 +2,7 @@ using System.Net.Http.Headers;
 using System.Reflection.Metadata;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Fitomad.OpenAI.Extensions;
+namespace Fitomad.OpenAI;
 
 public static class ServiceColletionOpenAI
 {

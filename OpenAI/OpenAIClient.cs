@@ -1,24 +1,47 @@
-using Fitomad.OpenAI.Models.Chat;
-using Fitomad.OpenAI.Models.Image;
+using Fitomad.OpenAI.Endpoints.Audio;
+using Fitomad.OpenAI.Endpoints.Chat;
+using Fitomad.OpenAI.Endpoints.Image;
+using Fitomad.OpenAI.Endpoints.Models;
+using Fitomad.OpenAI.Endpoints.Moderation;
+
+namespace Fitomad.OpenAI;
 
 public interface IOpenAIClient
 {
-    public ChatModel ChatCompletion { get; }
-    public ImageModel Image { get; }
+    public ChatEndpoint ChatCompletion { get; }
+    public ImageEndpoint Image { get; }
+    public AudioEndpoint Audio { get; }
+    public ModerationEndpoint Moderation { get; }
+    public ModelEndpoint Models { get; }
 }
 
 public class OpenAIClient: IOpenAIClient
 {
     private HttpClient _httpClient;
 
-    public ChatModel ChatCompletion
+    public ChatEndpoint ChatCompletion
     {
-        get => new ChatModel(_httpClient);
+        get => new ChatEndpoint(_httpClient);
     }
 
-    public ImageModel Image
+    public ImageEndpoint Image
     {
-        get => new ImageModel(_httpClient);
+        get => new ImageEndpoint(_httpClient);
+    }
+
+    public AudioEndpoint Audio
+    {
+        get => new AudioEndpoint(_httpClient);
+    }
+
+    public ModerationEndpoint Moderation
+    {
+        get => new ModerationEndpoint(_httpClient);
+    }
+
+    public ModelEndpoint Models
+    {
+        get => new ModelEndpoint(_httpClient);
     }
 
     public OpenAIClient(HttpClient httpClient)
