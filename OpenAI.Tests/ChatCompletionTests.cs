@@ -213,6 +213,5 @@ public class ChatCompletionTests
         Assert.NotNull(imageExplanationResponse);
         Assert.NotEmpty(imageExplanationResponse.ResponseId);
         Assert.NotEmpty(imageExplanationResponse.Choices);
-        Console.WriteLine(imageExplanationResponse.Choices);
     }
 }

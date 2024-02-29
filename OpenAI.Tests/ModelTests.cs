@@ -49,7 +49,6 @@ public class ModelTests
             Assert.NotEmpty(model.Owner);
             Assert.NotEmpty(model.ObjectType);
             Assert.NotEqual(0, model.CreatedDate);
-            Console.WriteLine(model.ModelId);
         }
     }
 
