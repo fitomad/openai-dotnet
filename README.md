@@ -260,6 +260,14 @@ ModelDeletedResponse response = await _client.Models.Delete(model: modelName);
 
 ## Changes
 
+### 1.0.2
+
+- Chat endpoint models brings support the following:
+    - `gpt-4o` 🚀
+    - `gpt-4-turbo`
+    - `gpt-4-turbo-2024-04-09`
+    - `gpt-4-turbo-preview`
+
 ### 0.2.1
 
 - New package icon 🎉
