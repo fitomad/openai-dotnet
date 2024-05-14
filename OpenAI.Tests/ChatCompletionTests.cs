@@ -40,6 +40,8 @@ public class ChatCompletionTests
     [InlineData(ChatModelType.GPT_4)]
     [InlineData(ChatModelType.GPT_4_VISION_PREVIEW)]
     [InlineData(ChatModelType.GPT_4_1106_PREVIEW)]
+    [InlineData(ChatModelType.GPT_4o)]
+    [InlineData(ChatModelType.GTP_4_TURBO)]
     public void Chat_Models(ChatModelType kind)
     {
         ChatRequest request = new ChatRequestBuilder()
@@ -187,7 +189,7 @@ public class ChatCompletionTests
         Assert.NotNull(_client);
 
         ChatRequest request = new ChatRequestBuilder()
-            .WithModel(ChatModelType.GPT_3_5_TURBO)
+            .WithModel(ChatModelType.GPT_4o)
             .WithSystemMessage("Eres un profesor de alumnos de 10 años.")
             .WithUserMessage("Explícame qué es una estrella.")
             .WithTemperatute(Temperature.Precise)
